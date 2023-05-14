@@ -1,15 +1,15 @@
-package org.dzmitry.kapachou;
+package org.dzmitry.kapachou.spyglass;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
-public class EverestApplicationRunner {
+public class SpyGlassApplicationRunner {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-                .sources(EverestApplicationRunner.class)
+                .sources(SpyGlassApplicationRunner.class)
                 .bannerMode(Banner.Mode.OFF)
                 .run(args);
     }

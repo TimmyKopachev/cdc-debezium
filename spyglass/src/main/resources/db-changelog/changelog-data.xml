@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="set-unique-name-1" author="dzmitry.kapachou">
+        <sql>
+
+            insert into attender(id, first_name, last_name) values (-101, 'dzmitry', 'kapachou');
+            insert into attender(id, first_name, last_name) values (-102, 'kseniya', 'borschevskaya');
+            insert into attender(id, first_name, last_name) values (-103, 'viktar', 'kapachou');
+
+            <!--&-->
+            insert into attender_task(attender_id, status, task_id) values (-101, 'TO_DO', -24);
+            insert into attender_task(attender_id, status, task_id) values (-101, 'IN_PROGRESS', -25);
+            insert into attender_task(attender_id, status, task_id) values (-101, 'IN_PROGRESS', -26);
+
+            insert into attender_task(attender_id, status, task_id) values (-102, 'TO_DO', -24);
+            insert into attender_task(attender_id, status, task_id) values (-102, 'REVIEW', -25);
+            insert into attender_task(attender_id, status, task_id) values (-102, 'DONE', -26);
+
+            insert into attender_task(attender_id, status, task_id) values (-103, 'DONE', -24);
+            insert into attender_task(attender_id, status, task_id) values (-103, 'IN_PROGRESS', -25);
+            insert into attender_task(attender_id, status, task_id) values (-103, 'DONE', -26);
+            <!--&-->
+
+            insert into task(id, description) values (-24, 'description task #1');
+            insert into task(id, description) values (-25, 'description task #2');
+            insert into task(id, description) values (-26, 'description task #3');
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
