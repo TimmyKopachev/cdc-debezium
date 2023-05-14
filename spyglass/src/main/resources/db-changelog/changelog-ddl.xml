@@ -4,31 +4,23 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="set-unique-name-1" author="dzmitry.kapachou">
-
-        <createTable tableName="attender">
+        <createTable tableName="portfolio">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false"/>
             </column>
-            <column name="first_name" type="VARCHAR(255)"/>
-            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="portfolio_name" type="VARCHAR(255)"/>
+            <column name="available_cash" type="BIGINT"/>
         </createTable>
 
-        <createTable tableName="attender_task">
-            <column name="attender_id" type="BIGINT"/>
-            <column name="task_id" type="BIGINT"/>
-            <column name="status" type="VARCHAR(20)"/>
-        </createTable>
-
-        <createTable tableName="task">
+        <createTable tableName="asset">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="VARCHAR(5055)"/>
+            <column name="asset" type="VARCHAR(255)"/>
+            <column name="cusip" type="VARCHAR(255)"/>
+            <column name="maturity_bucket" type="VARCHAR(255)"/>
+            <column name="portfolio_id" type="BIGINT"/>
         </createTable>
-
-        <addUniqueConstraint tableName="attender_task"
-                             constraintName="uk_attender_id_task_id"
-                             columnNames="attender_id, task_id"/>
 
     </changeSet>
 
