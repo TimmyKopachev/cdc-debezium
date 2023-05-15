@@ -26,3 +26,12 @@ spring:
         show_sql: false
         format_sql: false
         ddl-auto: none
+
+everest:
+  db:
+    connection:
+      url: jdbc:postgresql
+      port: 5432
+      username: postgres
+      password: postgres
+      dbName: everest

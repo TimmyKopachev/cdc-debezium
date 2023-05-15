@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Slf4j
 public class SpyGlassApplicationRunner {
 
-    final PortfolioRepository portfolioRepository;
+    private final PortfolioRepository portfolioRepository;
 
 
     public static void main(String[] args) {
