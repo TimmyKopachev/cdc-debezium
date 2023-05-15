@@ -30,8 +30,9 @@ spring:
 everest:
   db:
     connection:
-      url: jdbc:postgresql
+      #url: jdbc:postgresql
+      url: localhost
       port: 5432
       username: postgres
       password: postgres
-      dbName: everest
+      dbName: everest-db

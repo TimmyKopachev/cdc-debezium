@@ -1,4 +1,4 @@
-package org.dzmitry.kapachou.spyglass.repo;
+package org.dzmitry.kapachou.spyglass.service.repo;
 
 
 import org.dzmitry.kapachou.spyglass.entity.Asset;

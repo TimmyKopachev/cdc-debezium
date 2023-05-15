@@ -2,7 +2,7 @@ package org.dzmitry.kapachou.spyglass;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.dzmitry.kapachou.spyglass.repo.PortfolioRepository;
+import org.dzmitry.kapachou.spyglass.service.repo.PortfolioRepository;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
