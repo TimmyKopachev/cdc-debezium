@@ -6,7 +6,6 @@ import io.debezium.embedded.Connect;
 import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.RecordChangeEvent;
 import io.debezium.engine.format.ChangeEventFormat;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.connect.data.Field;
 import org.apache.kafka.connect.data.Struct;
@@ -26,7 +25,6 @@ import static io.debezium.data.Envelope.FieldName.*;
 
 @Slf4j
 @Component
-@AllArgsConstructor
 public class EverestDebeziumListener {
 
     private final Executor executor = Executors.newSingleThreadExecutor();

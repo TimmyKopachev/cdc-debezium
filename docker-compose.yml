@@ -5,8 +5,8 @@ services:
     image: "postgres:10.3"
     container_name: "everest-db"
     environment:
-      POSTGRES_DB: "everest-db"
+      POSTGRES_DB: "artist-db"
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_PASSWORD: "852456"
     ports:
       - "5432:5432"

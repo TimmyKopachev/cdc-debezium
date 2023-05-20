@@ -18,9 +18,9 @@ public class EverestImporterService {
 
     private final AssetRepository assetRepository;
 
-    public void replicateData(Map<String, Object> customerData, Envelope.Operation operation) {
+    public void replicateData(Map<String, Object> everestData, Envelope.Operation operation) {
         final ObjectMapper mapper = new ObjectMapper();
-        final Portfolio portfolio = mapper.convertValue(customerData, Portfolio.class);
+        final Portfolio portfolio = mapper.convertValue(everestData, Portfolio.class);
 
         if (Envelope.Operation.DELETE == operation) {
             //customerRepository.deleteById(customer.getId());

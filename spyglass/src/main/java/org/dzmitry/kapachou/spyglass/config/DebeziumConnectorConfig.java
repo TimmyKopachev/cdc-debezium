@@ -28,6 +28,8 @@ public class DebeziumConnectorConfig {
                 .with("offset.storage.file.filename", offsetStorageTempFile.getAbsolutePath())
                 .with("offset.flush.interval.ms", "60000")
 
+
+                .with("database.server.name", String.format("%s-%s",everestDbProperties.getHostname(), everestDbProperties.getDbName()))
                 .with("database.hostname", everestDbProperties.getHostname())
                 .with("database.port", everestDbProperties.getPort())
                 .with("database.user", everestDbProperties.getUser())
@@ -37,11 +39,11 @@ public class DebeziumConnectorConfig {
                 .with("database.include", "public")
                 .with("include.schema.changes", "false")
                 .with("database.allowPublicKeyRetrieval", "true")
-                .with("database.server.name", "everest-db")
-                .with("database.history", "io.debezium.relational.history.FileDatabaseHistory")
-                .with("database.history.file.filename", dbHistoryTempFile.getAbsolutePath())
-                .with("plugin.name", "pgoutput")
-                .with("slot.name", everestDbProperties.getDbName())
+                //.with("database.server.name", "everest-db")
+                //.with("database.history", "io.debezium.relational.history.FileDatabaseHistory")
+                //.with("database.history.file.filename", dbHistoryTempFile.getAbsolutePath())
+                //.with("plugin.name", "pgoutput")
+                //.with("slot.name", everestDbProperties.getDbName())
                 .with(PostgresConnectorConfig.SNAPSHOT_MODE, PostgresConnectorConfig.SnapshotMode.NEVER)
                 .build();
     }
