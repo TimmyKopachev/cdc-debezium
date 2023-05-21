@@ -9,9 +9,8 @@ spring:
   #JPA
   datasource:
     url: jdbc:postgresql://localhost:5432/everest-db
-    #url: jdbc:postgresql://localhost:5432/artist-db
     username: postgres
-    password:
+    password: postgres
   jpa:
     open-in-view: false
     properties:

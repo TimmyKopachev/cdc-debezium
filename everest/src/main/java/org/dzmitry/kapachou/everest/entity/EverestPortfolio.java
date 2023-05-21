@@ -2,8 +2,11 @@ package org.dzmitry.kapachou.everest.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "portfolio")
@@ -15,7 +18,4 @@ public class EverestPortfolio {
     String name;
     Integer cash;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "portfolio_id")
-    private Set<Asset> assets;
 }

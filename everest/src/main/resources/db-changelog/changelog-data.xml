@@ -9,10 +9,6 @@
             insert into portfolio(id, name, cash) values (101, 'portfolio-001#c', 500);
             insert into portfolio(id, name, cash) values (102, 'portfolio-2dcf#c', 2000);
             insert into portfolio(id, name, cash) values (103, 'portfolio-e0dD#c', 100);
-            <!--&-->
-            insert into asset(id, asset, cusip, maturity_bucket, portfolio_id) values (-24, 'asset-0#1','CSP-0001', '5 years', 101);
-            insert into asset(id, asset, cusip, maturity_bucket, portfolio_id) values (-25, 'asset-0#2','CSP-0002', '2 years', 102);
-            insert into asset(id, asset, cusip, maturity_bucket, portfolio_id) values (-26, 'asset-0#3', 'CSP-0003', '5 months', 102);
 
         </sql>
     </changeSet>

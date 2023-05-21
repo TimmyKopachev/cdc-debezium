@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.connect.data.Field;
 import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.source.SourceRecord;
+import org.dzmitry.kapachou.spyglass.entity.Portfolio;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Component;
 
@@ -57,10 +58,18 @@ public class EverestDebeziumListener {
                         .map(fieldName -> Pair.of(fieldName, struct.get(fieldName)))
                         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
 
-                this.everestImporterService.replicateData(payload, operation);
+
+                this.everestImporterService.replicateData(mapSpyGlassPortfolioModel(payload), operation);
                 log.info("Updated Data: {} with Operation: {}", payload, operation.name());
             }
         }
+    }
+
+    private Portfolio mapSpyGlassPortfolioModel(Map<String, Object> everestData) {
+        return new Portfolio(
+                (Long) everestData.get("id"),
+                (String) everestData.get("name"),
+                ((Long) everestData.get("cash")).intValue());
     }
 
     @PostConstruct

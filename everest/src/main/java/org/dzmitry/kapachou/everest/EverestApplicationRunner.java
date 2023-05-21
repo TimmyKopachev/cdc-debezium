@@ -2,7 +2,6 @@ package org.dzmitry.kapachou.everest;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.dzmitry.kapachou.everest.entity.Asset;
 import org.dzmitry.kapachou.everest.entity.EverestPortfolio;
 import org.dzmitry.kapachou.everest.repo.PortfolioRepository;
 import org.springframework.boot.Banner;
@@ -11,7 +10,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -32,21 +30,19 @@ public class EverestApplicationRunner {
 
     @Scheduled(fixedDelay = 15000)
     public void pushRequestToSaveDataInEverest() {
-
-        portfolioRepository.save(createEverestPortfolio());
-        portfolioRepository.findAll().forEach(p -> log.info("portfolio: {}", p));
+        try {
+            portfolioRepository.save(createEverestPortfolio());
+            log.info("portfolios #: [{}]", portfolioRepository.count());
+        } catch (Throwable e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     private static EverestPortfolio createEverestPortfolio() {
         EverestPortfolio ep = new EverestPortfolio();
         ep.setName(String.format("portfolio#-%s", UUID.randomUUID().getLeastSignificantBits()));
         ep.setCash(ThreadLocalRandom.current().nextInt(0, 100));
-
-        Asset asset = new Asset();
-        asset.setAsset(String.format("asset#-%s", UUID.randomUUID().getLeastSignificantBits()));
-        asset.setCusip("#generated-cusip");
-
-        ep.setAssets(Set.of(asset));
+        log.info("new portfolio has been created: [{}]", ep);
         return ep;
     }
 }

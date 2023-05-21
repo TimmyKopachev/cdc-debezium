@@ -1,31 +1,25 @@
 package org.dzmitry.kapachou.spyglass.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.debezium.data.Envelope;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.dzmitry.kapachou.spyglass.entity.Portfolio;
-import org.dzmitry.kapachou.spyglass.service.repo.AssetRepository;
 import org.dzmitry.kapachou.spyglass.service.repo.PortfolioRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-
 @Component
+@Slf4j
 @AllArgsConstructor
 public class EverestImporterService {
-
     private final PortfolioRepository portfolioRepository;
 
-    private final AssetRepository assetRepository;
-
-    public void replicateData(Map<String, Object> everestData, Envelope.Operation operation) {
-        final ObjectMapper mapper = new ObjectMapper();
-        final Portfolio portfolio = mapper.convertValue(everestData, Portfolio.class);
-
+    public void replicateData(Portfolio portfolio, Envelope.Operation operation) {
         if (Envelope.Operation.DELETE == operation) {
-            //customerRepository.deleteById(customer.getId());
+            portfolioRepository.deleteById(portfolio.getId());
         } else {
-            //customerRepository.save(customer);
+            portfolioRepository.save(portfolio);
         }
+        log.info("portfolios #: [{}]", portfolioRepository.count());
     }
 }

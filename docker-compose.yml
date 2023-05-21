@@ -5,8 +5,12 @@ services:
     image: "postgres:10.3"
     container_name: "everest-db"
     environment:
-      POSTGRES_DB: "artist-db"
+      POSTGRES_DB: "everest-db"
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "852456"
+      POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"

@@ -13,16 +13,6 @@
             <column name="cash" type="BIGINT"/>
         </createTable>
 
-        <createTable tableName="asset">
-            <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints nullable="false"/>
-            </column>
-            <column name="asset" type="VARCHAR(255)"/>
-            <column name="cusip" type="VARCHAR(255)"/>
-            <column name="maturity_bucket" type="VARCHAR(255)"/>
-            <column name="portfolio_id" type="BIGINT"/>
-        </createTable>
-
     </changeSet>
 
 </databaseChangeLog>
